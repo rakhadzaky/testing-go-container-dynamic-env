@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  api-gateway-bifast:
+    image: go-testing-dynamic-docker-env:1.0.0
+    container_name: go-testing-dynamic-docker-env-stg
+    restart: on-failure
+    user: root
+    hostname: go-testing-dynamic-docker-env-stg
+    ports:
+      - '6106:6106'
+    networks:
+      - allo
+    environment:
+      - SERVICE_ENV=config.prod.yaml
+
+networks:
+  allo:
+    external: true
+
